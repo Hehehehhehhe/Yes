@@ -1,0 +1,56 @@
+local UILibrary = {}
+
+-- Create a screen GUI
+function UILibrary:CreateScreenGui(parent)
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "CustomScreenGui"
+    screenGui.Parent = parent or game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    return screenGui
+end
+
+-- Create a frame
+function UILibrary:CreateFrame(parent, size, position, bgColor)
+    local frame = Instance.new("Frame")
+    frame.Size = size or UDim2.new(0, 100, 0, 100)
+    frame.Position = position or UDim2.new(0, 0, 0, 0)
+    frame.BackgroundColor3 = bgColor or Color3.new(1, 1, 1)
+    frame.Parent = parent
+    return frame
+end
+
+-- Create a button
+function UILibrary:CreateButton(parent, size, position, text, onClick)
+    local button = Instance.new("TextButton")
+    button.Size = size or UDim2.new(0, 100, 0, 50)
+    button.Position = position or UDim2.new(0, 0, 0, 0)
+    button.Text = text or "Button"
+    button.Parent = parent
+    if onClick then
+        button.MouseButton1Click:Connect(onClick)
+    end
+    return button
+end
+
+-- Create a label
+function UILibrary:CreateLabel(parent, size, position, text)
+    local label = Instance.new("TextLabel")
+    label.Size = size or UDim2.new(0, 100, 0, 50)
+    label.Position = position or UDim2.new(0, 0, 0, 0)
+    label.Text = text or "Label"
+    label.BackgroundTransparency = 1
+    label.Parent = parent
+    return label
+end
+
+-- Create a textbox
+function UILibrary:CreateTextBox(parent, size, position, placeholderText)
+    local textBox = Instance.new("TextBox")
+    textBox.Size = size or UDim2.new(0, 100, 0, 50)
+    textBox.Position = position or UDim2.new(0, 0, 0, 0)
+    textBox.PlaceholderText = placeholderText or "Enter text"
+    textBox.Text = ""
+    textBox.Parent = parent
+    return textBox
+end
+
+return UILibrary
